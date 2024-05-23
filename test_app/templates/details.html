@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Details</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style4.css' %}">
+</head>
+<body>
+    <h2>Hello, {{current_user.first_name}}</h2>
+
+    <div class="container">
+        <div class="sec1">
+            <h4>{{trip_x.country}}</h4>
+            <div class="det">
+                <p>Start Date: {{trip_x.startdate|date:"m/d/Y"}}</p>
+                <p>End Date: {{trip_x.enddate|date:"m/d/Y"}}</p>
+                <p>Created on: {{trip_x.created_at|date:"m/d/Y"}}</p>
+                <p>Updated on: {{trip_x.updated_at|date:"m/d/Y"}}</p>
+                <p>Organized by: {{trip_x.organizer.first_name}} {{trip_x.organizer.last_name}}</p>
+                <p><strong>Itinerary:</strong></p>
+                <p>{{trip_x.itinerary}}</p>
+            </div>
+        </div>
+        <div class="sec2">
+            <p>Travellors on this trip:</p>
+                <ul>
+                    {%for user in trip_x.travelers.all%}
+                        <li>{{user.first_name}} {{user.last_name}}</li>
+                    {%endfor%}
+                </ul>
+                <a href="/trips/mytrips">Go to my trips   >></a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding:50px;
+}
+.container{
+    display: flex;
+}
+h2{
+    margin-bottom: 50px;
+}
+.det{
+    border: 1px solid black;
+    width: 400px;
+    padding: 8px;
+}
+p{
+    margin-bottom: 15px;
+    letter-spacing: 1.5px;
+}
+.sec2{
+    border: 1px solid #9900ff;
+    text-align: center;
+    width: 300px;
+    margin-top: 40px;
+    margin-left: 80px;
+    list-style-position: inside;
+    color:#9900ff;
+    font-weight: bold;
+}
+.sec2 ul{
+    margin-bottom: 80px;
+}
+.sec2 a{
+    color: #9900ff;
+}

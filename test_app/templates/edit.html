@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Trip</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style3.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h2>Hello, {{current_user.first_name}}</h2>
+        <div class="links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <h2>Edit Trip</h2>
+    <form action="/edit/{{trip_x.id}}" method="post">
+        {%csrf_token%}
+        <div>
+            <label for "text">Destination:</label>
+            <input type="text" name="dest" value={{trip_x.country}}>
+        </div>
+        <div>
+            <label for"date">Start Date:</label>
+            <input type="date" name="date" value={{trip_x.startdate}}>
+        </div>
+        <div>
+            <label for"date">End Date:</label>
+            <input type="date" name="dateend">
+        </div>
+        <div>
+            <label for="itin" class="text">Itinerary</label>
+            <textarea name="itin" value={{trip_x.itinerary}}></textarea>
+        </div>
+        <input type="submit" value="Update">
+    </form>
+    {% if messages %}
+        <ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+    </ul>
+    {% endif %}
+
+    <button class="danger"><a href="/delete/{{trip_x.id}}">Delete this trip</a>
+</body>
+</html>
